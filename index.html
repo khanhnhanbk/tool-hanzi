@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tool Chuyển Đổi Chữ Phồn - Giản</title>
+  <script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/full.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin: 10px 0;
+      font-size: 16px;
+      padding: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Công cụ chuyển đổi Phồn thể ➔ Giản thể</h2>
+
+  <label for="input">Nhập chữ Phồn thể:</label>
+  <textarea id="input" placeholder="Ví dụ: 臺灣..."></textarea>
+
+  <button onclick="convertText()">Chuyển đổi</button>
+
+  <h3>Kết quả (Giản thể):</h3>
+  <textarea id="output" readonly></textarea>
+
+  <script>
+    // Khởi tạo bộ chuyển đổi từ Phồn (tw) sang Giản (cn)
+    const converter = OpenCC.Converter({ from: 'tw', to: 'cn' });
+
+    function convertText() {
+      const inputText = document.getElementById('input').value;
+      // Tiến hành chuyển đổi
+      const outputText = converter(inputText);
+      document.getElementById('output').value = outputText;
+    }
+  </script>
+
+</body>
+
+</html>
